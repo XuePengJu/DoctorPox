@@ -19,7 +19,7 @@ public class Constants {
     //正确的登录密码
     public static final String CORRECT_CAPTCHA = "234545";
     //什么时候去预定呀，时间
-    public static final String CORRECT_DATE = "2021-09-19";
+    public static final String CORRECT_DATE = "2021-09-25";
     public static final String CORRECT_time = "17:55:00";
 //    public static final String CORRECT_time = "00:01:00";
 

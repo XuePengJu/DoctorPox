@@ -26,33 +26,8 @@ public class BaseTest {
 
     @BeforeSuite
     public void globalSetup() throws InterruptedException {
-        IndexPage indexPage = new IndexPage();
-////        加时间判断
-//        while (true) {
-////        获取设定的时间
-//            String reserve = Constants.CORRECT_DATE + " " + Constants.CORRECT_time;
-////            System.out.println(reserve);
-////        转时间戳
-////            long stamptime = BaseTest.dateToStamp(reserve);
-//            long stamptime = indexPage.dateToStamp(reserve);
-//            logger.info("设定时间的时间戳：" + stamptime);
-//
-//            long nowTime = System.currentTimeMillis() / 1000;
-//            Integer nowTimeInt = new Long(nowTime).intValue();
-//            logger.info("现在时间戳：" + nowTimeInt);
-//
-//            if (nowTimeInt == stamptime) {
-//                logger.info("时间到了,开始去抢着预约了");
-//                break;
-//            } else if (nowTimeInt > stamptime + 10) {
-//                logger.warn("都过了时间了，别等了");
-//                System.exit(0);
-//            } else {
-//                logger.info("时间还没到,耐心等待");
-//                Thread.sleep(1000);
-//            }
-//        }
-
+//        判断是否到达时间
+        time_judgment();
         //打开测试App-只打开一次
         openApp();
         setImplicitlyWait(5);
@@ -134,6 +109,35 @@ public class BaseTest {
         //2、字节数组
         byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
         return screenshot;
+    }
+
+    public void time_judgment() throws InterruptedException {
+        IndexPage indexPage = new IndexPage();
+//        加时间判断
+        while (true) {
+//        获取设定的时间
+            String reserve = Constants.CORRECT_DATE + " " + Constants.CORRECT_time;
+//            System.out.println(reserve);
+//        转时间戳
+//            long stamptime = BaseTest.dateToStamp(reserve);
+            long stamptime = indexPage.dateToStamp(reserve);
+            logger.debug("设定时间的时间戳：" + stamptime);
+
+            long nowTime = System.currentTimeMillis() / 1000;
+            Integer nowTimeInt = new Long(nowTime).intValue();
+            logger.debug("现在时间戳：" + nowTimeInt);
+
+            if (nowTimeInt == stamptime) {
+                logger.info("时间到了,开始去抢着预约了");
+                break;
+            } else if (nowTimeInt > stamptime + 10) {
+                logger.warn("都过了时间了，别等了");
+                System.exit(0);
+            } else {
+                logger.info("时间还没到,耐心等待");
+                Thread.sleep(1000);
+            }
+        }
     }
 
 }

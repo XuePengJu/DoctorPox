@@ -145,7 +145,7 @@ public class BasePage {
             strstamp = String.valueOf(current_time / 1000);
         }
         long stamp = Integer.parseInt(strstamp);
-        logger.info("时间转时间戳,int类型");
+        logger.debug("时间转时间戳,int类型");
         return stamp;
     }
 

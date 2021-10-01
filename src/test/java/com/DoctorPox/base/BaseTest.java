@@ -30,7 +30,7 @@ public class BaseTest {
         //time_judgment();
         //打开测试App-只打开一次
         openApp();
-        setImplicitlyWait(5);
+        setImplicitlyWait(10);
     }
 
     @AfterSuite

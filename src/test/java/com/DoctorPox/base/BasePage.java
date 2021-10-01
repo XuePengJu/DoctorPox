@@ -40,19 +40,28 @@ public class BasePage {
      */
     public void randomClick(By by, String desc) {
         List<WebElement> list = null;
-        int index;
-        try {
-            Random random = new Random();
-            //生成的随机数范围0-9
-            index = random.nextInt(10);
-            list = BaseTest.driver.findElements(by);
-            list.get(index).click();
-        } catch (Exception e) {
-            logger.error("定位元素异常【" + desc + "】");
-            logger.error(e);
-            throw e;
+        list = BaseTest.driver.findElements(by);
+        int index = 0;
+        for (Object obj : list) {
+            logger.info("依次输出状态【" + index + list.get(index).getText() + "】");
+            index += 1;
         }
-        logger.info("随机点击元素【" + list.get(index).getText() + "】");
+//        待解决倒序，判断，去预约
+
+//        try {
+//            Random random = new Random();
+//            //生成的随机数范围0-9
+//            index = random.nextInt(11);
+//
+//
+////            list = BaseTest.driver.findElements(by);
+////            list.get(index).click();
+//        } catch (Exception e) {
+//            logger.error("定位元素异常【" + desc + "】");
+////            logger.error(e);
+//            throw e;
+//        }
+//        logger.info("随机点击元素【" + list.get(index).getText() + "】");
     }
 
     /**

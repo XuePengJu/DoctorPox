@@ -27,10 +27,16 @@ public class reserve extends BaseTest {
         ReservePage reservePage = new ReservePage();
 //        点击预约管理
         indexPage.clickSubscriben();
-        Thread.sleep(1000);
+        Thread.sleep(500);
+//        点击周六选项卡
+//        reservePage.clicksaturday();
+//        Thread.sleep(500);
+//        随机点击
+        reservePage.clickreserve();
+
 //        点击返回按钮
         reservePage.clickback();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
     }
 //    @AfterMethod

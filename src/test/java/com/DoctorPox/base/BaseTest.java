@@ -26,8 +26,8 @@ public class BaseTest {
 
     @BeforeSuite
     public void globalSetup() throws InterruptedException {
-//        判断是否到达时间
-        time_judgment();
+        //判断是否到达时间
+        //time_judgment();
         //打开测试App-只打开一次
         openApp();
         setImplicitlyWait(5);
@@ -47,7 +47,7 @@ public class BaseTest {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("deviceName", Constants.DEVICE_NAME);
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("appWaitDuration", 5000);
+        desiredCapabilities.setCapability("appWaitDuration", 50000);
         desiredCapabilities.setCapability("appPackage", Constants.APP_PACKAGE);
         desiredCapabilities.setCapability("appActivity", Constants.APP_LAUNCHABLE);
         //noReset参数-不清楚掉App的数据

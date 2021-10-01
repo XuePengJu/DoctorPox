@@ -9,7 +9,8 @@ public class Constants {
     //测试App的包名
     public static final String APP_PACKAGE = "com.xcgl.dbs";
     //测试App的启动入口
-    public static final String APP_LAUNCHABLE = "com.xcgl.dbs.ui.main.view.LoginActivity";
+//    public static final String APP_LAUNCHABLE = "com.xcgl.dbs.ui.main.view.MainActivity";
+    public static final String APP_LAUNCHABLE = "com.xcgl.dbs.ui.main.view.FlashActivity";
     //Appium服务地址（默认在本机，可以支持远程的主机）
     public static final String APPIUM_URL = "localhost";
     //Appium服务端口号（默认为4723）

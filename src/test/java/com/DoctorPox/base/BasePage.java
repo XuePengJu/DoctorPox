@@ -176,4 +176,32 @@ public class BasePage {
         logger.info("获取当前时间");
         return formatter.format(date);
     }
+    public  void comparison_time(String time) {
+        while (true) {
+//        获取当前时间并格式化
+            Date now_date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            System.out.println("now_date：" + formatter.format(now_date));
+            String str_now_time = formatter.format(now_date);
+            String str_now_time1 = formatter1.format(now_date);
+//        设定一个时间 Expected time
+            int compareTo = time.compareTo(str_now_time);
+            if (compareTo > 0) {
+                System.out.println("Real time _" + str_now_time1 + "__时机未到,耐心等待");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else if (compareTo == 0) {
+                System.out.println("时间到了");
+                break;
+            } else {
+//                时间过期了，程序结束
+                System.out.print("都过期了,检查下时间，活动结束了洗洗睡吧");
+                System.exit(1);
+            }
+        }
+    }
 }

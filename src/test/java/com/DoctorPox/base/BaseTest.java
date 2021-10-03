@@ -111,31 +111,28 @@ public class BaseTest {
         return screenshot;
     }
 
-    public void time_judgment() throws InterruptedException {
-        IndexPage indexPage = new IndexPage();
-//        加时间判断
+    public void comparison_time() {
         while (true) {
-//        获取设定的时间
-            String reserve = Constants.CORRECT_DATE + " " + Constants.CORRECT_time;
-//            System.out.println(reserve);
-//        转时间戳
-//            long stamptime = BaseTest.dateToStamp(reserve);
-            long stamptime = indexPage.dateToStamp(reserve);
-            logger.debug("设定时间的时间戳：" + stamptime);
-
-            long nowTime = System.currentTimeMillis() / 1000;
-            Integer nowTimeInt = new Long(nowTime).intValue();
-            logger.debug("现在时间戳：" + nowTimeInt);
-
-            if (nowTimeInt == stamptime) {
-                logger.info("时间到了,开始去抢着预约了");
+//        获取当前时间并格式化
+            Date now_date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH");
+            String str_now_time = formatter.format(now_date);
+//        设定一个时间 Expected time取 Constants.CORRECT_DATE
+            int compareTo = Constants.CORRECT_DATE.compareTo(str_now_time);
+            if (compareTo > 0) {
+                logger.info("Real time _" + "__时机未到,耐心等待");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else if (compareTo == 0) {
+                logger.info("时间到了");
                 break;
-            } else if (nowTimeInt > stamptime + 10) {
-                logger.warn("都过了时间了，别等了");
-                System.exit(0);
             } else {
-                logger.info("时间还没到,耐心等待");
-                Thread.sleep(1000);
+//                时间过期了，程序结束
+                logger.error("都过期了,检查下时间，活动结束了洗洗睡吧");
+                System.exit(1);
             }
         }
     }

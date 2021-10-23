@@ -12,8 +12,8 @@ public class ReservePage extends BasePage {
     By backBy = By.id("com.xcgl.dbs:id/iv_left");
 
     //    点击周六的位置
-    By saturdayBy = By.xpath("//*[@text=\"星期五\"]");
-    //    By saturdayBy = By.xpath("//*[@text=\"星期六\"]");
+//    By saturdayBy = By.xpath("//*[@text=\"星期五\"]");
+        By saturdayBy = By.xpath("//*[@text=\"星期六\"]");
     //    预约按钮
     By reserveBy = By.id("com.xcgl.dbs:id/tv_state");
     //    预约成功后 ，显示我知道了按钮定位

@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    Logger logger = Logger.getLogger(BaseTest.class);
+    protected Logger logger = Logger.getLogger(BaseTest.class);
     //定义全局static driver
     public static AndroidDriver driver;
 
@@ -31,14 +31,14 @@ public class BaseTest {
         //判断是否到达时间
         comparison_time();
         //打开测试App-只打开一次
-//        openApp();
+        openApp();
         setImplicitlyWait(10);
     }
 
     @AfterSuite
     public void globalTeardown() {
         //打开测试App-只打开一次
-//        closeApp();
+        closeApp();
     }
 
     /**

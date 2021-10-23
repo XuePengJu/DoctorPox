@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BasePage {
-    Logger logger = Logger.getLogger(BasePage.class);
+    protected Logger logger = Logger.getLogger(BasePage.class);
 
     /**
      * 点击操作的二次封装
@@ -32,37 +32,29 @@ public class BasePage {
         logger.info("点击了元素【" + desc + "】");
     }
 
-    /**
-     * 随机点击公共方法封装
-     *
-     * @param by
-     * @param desc
-     */
-    public void randomClick(By by, String desc) {
-        List<WebElement> list = null;
-        list = BaseTest.driver.findElements(by);
-        int index = 0;
-        for (Object obj : list) {
-            logger.info("依次输出状态【" + index + list.get(index).getText() + "】");
-            index += 1;
-        }
-//        待解决倒序，判断，去预约
-
-//        try {
-//            Random random = new Random();
-//            //生成的随机数范围0-9
-//            index = random.nextInt(11);
-//
-//
-////            list = BaseTest.driver.findElements(by);
-////            list.get(index).click();
-//        } catch (Exception e) {
-//            logger.error("定位元素异常【" + desc + "】");
-////            logger.error(e);
-//            throw e;
+//    /**
+//     * 预约方法封装
+//     *
+//     * @param by
+//     * @param desc
+//     */
+//    public void randomClick(By by, String desc) {
+//        List<WebElement> list = null;
+//        list = BaseTest.driver.findElements(by);
+//        int index = 0;
+//        for (Object obj : list) {
+//            logger.info("输出预约状态【" + index + list.get(index).getText() + "】");
+//            if (index >= 6) {
+////                判断在17点以后，index为6
+//                if (list.get(index).getText().equals("可预约")) {
+//                    list.get(index).click();
+//                    logger.info(index + "点击元素【" + list.get(index).getText() + "】");
+//                    break;
+//                }
+//            }
+//            index += 1;
 //        }
-//        logger.info("随机点击元素【" + list.get(index).getText() + "】");
-    }
+//    }
 
     /**
      * 输入操作的二次封装
@@ -176,5 +168,5 @@ public class BasePage {
         logger.info("获取当前时间");
         return formatter.format(date);
     }
-    
+
 }

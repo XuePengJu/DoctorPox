@@ -1,53 +1,63 @@
 package com.DoctorPox.testcases;
 
-import com.DoctorPox.base.BasePage;
 import com.DoctorPox.base.BaseTest;
-import com.DoctorPox.data.Constants;
+
 import com.DoctorPox.pages.IndexPage;
 import com.DoctorPox.pages.ReservePage;
-import org.apache.log4j.Logger;
+
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Handler;
 
 public class reserve extends BaseTest {
-    Logger logger = Logger.getLogger(reserve.class);
+
+    IndexPage indexPage = new IndexPage();
+    ReservePage reservePage = new ReservePage();
 
     @BeforeMethod
     public void setup() {
-        System.out.println("进入测试CASE");
+        logger.info("进入测试CASE");
     }
 
-    @Test
+        @Test
     public void reserve_test() throws InterruptedException {
         Thread.sleep(3000);
-        IndexPage indexPage = new IndexPage();
-        ReservePage reservePage = new ReservePage();
+
 //        点击预约管理
         indexPage.clickSubscriben();
         Thread.sleep(500);
 //        点击周六选项卡
-//        reservePage.clicksaturday();
-//        Thread.sleep(500);
-//        随机点击
+        reservePage.clicksaturday();
+        Thread.sleep(2000);
+//        点击预约17点以后的时间段
         reservePage.clickreserve();
+        Thread.sleep(3000);
+//        点击我知道了按钮
+        reservePage.seeIsee();
 
 //        点击返回按钮
-        reservePage.clickback();
+//        reservePage.clickback();
         Thread.sleep(1000);
 
     }
-//    @AfterMethod
-//    public void teardown(){
-//        closeApp();
-//        //返回到首页
-//      /*  KeyEvent keyEvent = new KeyEvent();
-//        keyEvent.withKey(AndroidKey.BACK);
-//        driver.pressKey(keyEvent);*/
-//        //通过执行启动入口-->首页页面
-//        backToIndex();
-//    }
 
+    @Test
+    public void reserve_test2() throws InterruptedException {
+        Thread.sleep(3000);
+        //        点击预约管理
+        indexPage.clickSubscriben();
+        Thread.sleep(500);
+//        断言预约成功
+        String expectstr = reservePage.seeAppointment_succeeded();
+        expectstr.equals("预约成功");
+
+
+    }
+
+    @AfterMethod
+    public void teardown() {
+        logger.info("结束测试CASE");
+
+    }
 }

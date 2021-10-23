@@ -55,9 +55,9 @@ public class ReservePage extends BasePage {
         list = BaseTest.driver.findElements(by);
         int index = 0;
         for (Object obj : list) {
-            if (index >= 6) {
+            if (index >= 7) {
                 logger.info("输出预约状态【" + index + list.get(index).getText() + "】");
-//                判断在17点以后，index为6
+//                判断在17点以后，index为7
                 if (list.get(index).getText().equals("可预约")) {
                     list.get(index).click();
                     logger.info("__跑到这里，基本上就是预约成功了");

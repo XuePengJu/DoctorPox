@@ -35,7 +35,6 @@ public class reserve extends BaseTest {
         Thread.sleep(3000);
 //        点击我知道了按钮
         reservePage.seeIsee();
-
 //        点击返回按钮
 //        reservePage.clickback();
         Thread.sleep(1000);

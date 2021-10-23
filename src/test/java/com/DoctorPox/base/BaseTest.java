@@ -119,14 +119,14 @@ public class BaseTest {
             Date now_date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH");
             String str_now_time = formatter.format(now_date);
-            System.out.println(str_now_time);
+//            System.out.println(str_now_time);
 //        设定一个时间 Expected time取 Constants.CORRECT_DATE
             int compareTo = Constants.CORRECT_DATE.compareTo(str_now_time);
-            logger.info("compareTo:" + compareTo);
+//            logger.info("compareTo:" + compareTo);
             if (compareTo > 0) {
                 logger.info("Real time _" + "__时机未到,耐心等待");
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(20000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

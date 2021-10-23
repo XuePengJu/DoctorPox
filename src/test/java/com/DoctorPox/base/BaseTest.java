@@ -27,7 +27,7 @@ public class BaseTest {
     public static AndroidDriver driver;
 
     @BeforeSuite
-    public void globalSetup() throws InterruptedException {
+    public void globalSetup() {
         //判断是否到达时间
         comparison_time();
         //打开测试App-只打开一次

@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -27,16 +29,16 @@ public class BaseTest {
     @BeforeSuite
     public void globalSetup() throws InterruptedException {
         //判断是否到达时间
-        //time_judgment();
+        comparison_time();
         //打开测试App-只打开一次
-        openApp();
+//        openApp();
         setImplicitlyWait(10);
     }
 
     @AfterSuite
     public void globalTeardown() {
         //打开测试App-只打开一次
-        closeApp();
+//        closeApp();
     }
 
     /**
@@ -117,8 +119,10 @@ public class BaseTest {
             Date now_date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH");
             String str_now_time = formatter.format(now_date);
+            System.out.println(str_now_time);
 //        设定一个时间 Expected time取 Constants.CORRECT_DATE
             int compareTo = Constants.CORRECT_DATE.compareTo(str_now_time);
+            logger.info("compareTo:" + compareTo);
             if (compareTo > 0) {
                 logger.info("Real time _" + "__时机未到,耐心等待");
                 try {
@@ -126,15 +130,15 @@ public class BaseTest {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            } else if (compareTo == 0) {
-                logger.info("时间到了");
-                break;
-            } else {
-//                时间过期了，程序结束
+            } else if (compareTo < 0) {
+                //                时间过期了，程序结束
                 logger.error("都过期了,检查下时间，活动结束了洗洗睡吧");
                 System.exit(1);
+            } else {
+                logger.info("时间到了");
+                break;
+
             }
         }
     }
-
 }

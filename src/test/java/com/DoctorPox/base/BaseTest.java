@@ -1,8 +1,6 @@
 package com.DoctorPox.base;
 
 import com.DoctorPox.data.Constants;
-import com.DoctorPox.pages.IndexPage;
-import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;

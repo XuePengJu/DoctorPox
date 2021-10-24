@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Random;
+
 
 public class BasePage {
     protected Logger logger = Logger.getLogger(BasePage.class);
@@ -32,29 +31,6 @@ public class BasePage {
         logger.info("点击了元素【" + desc + "】");
     }
 
-//    /**
-//     * 预约方法封装
-//     *
-//     * @param by
-//     * @param desc
-//     */
-//    public void randomClick(By by, String desc) {
-//        List<WebElement> list = null;
-//        list = BaseTest.driver.findElements(by);
-//        int index = 0;
-//        for (Object obj : list) {
-//            logger.info("输出预约状态【" + index + list.get(index).getText() + "】");
-//            if (index >= 6) {
-////                判断在17点以后，index为6
-//                if (list.get(index).getText().equals("可预约")) {
-//                    list.get(index).click();
-//                    logger.info(index + "点击元素【" + list.get(index).getText() + "】");
-//                    break;
-//                }
-//            }
-//            index += 1;
-//        }
-//    }
 
     /**
      * 输入操作的二次封装
